@@ -1,0 +1,16 @@
+.formcontainer {
+  border: red solid 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#videocontainer video {
+  width: 400px;
+  height: 200px;
+  border: red solid 2px;
+}
+
+.submitbutton {
+  margin-bottom: 50px;
+}

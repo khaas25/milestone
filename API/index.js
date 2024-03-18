@@ -41,6 +41,16 @@ app.get("/videos/:id", async (req, res) => {
   }
 });
 
+app.delete("/videos/:id", async (req, res) => {
+  try {
+    var _id = req.params.id;
+    var deletedVideo = await VideoSchema.deleteOne({ _id: _id });
+    res.status(200).send(deletedVideo);
+  } catch {
+    res.status(404).send("Video not found");
+  }
+});
+
 app.patch("/videos/:id", async (req, res) => {
   try {
     var _id = req.params.id;
@@ -53,12 +63,27 @@ app.patch("/videos/:id", async (req, res) => {
   }
 });
 
-app.delete("/videos/:id", async (req, res) => {
-  try {
-    var _id = req.params.id;
-    var deletedVideo = await VideoSchema.deleteOne({ _id: _id });
-    res.status(200).send(deletedVideo);
-  } catch {
-    res.status(404).send("Video not found");
-  }
-});
+// comments============
+
+// app.patch("/videos/:id", async (req, res) => {
+//   const id = req.params;
+//   const comments = req.body;
+
+//   try {
+//     // Find the video by ID and update its comments
+//     const updatedVideo = await Video.findByIdAndUpdate(
+//       id,
+//       { $set: { comments } },
+//       { new: true } // Return the updated video after the update operation
+//     );
+
+//     if (!updatedVideo) {
+//       return res.status(404).json({ error: "Video not found" });
+//     }
+
+//     res.status(200).json(updatedVideo);
+//   } catch (error) {
+//     console.error("Error updating comments:", error);
+//     res.status(500).json({ error: "Internal server error" });
+//   }
+// });

@@ -6,13 +6,13 @@ var videoSchema = new mongoose.Schema({
   likes: { type: Number, required: false, default: 0 },
   comments: [
     {
-      name: { type: String, required: true },
-      comment: { type: String, required: true },
+      name: { type: String, required: false },
+      comment: { type: String, required: false },
     },
   ],
   timestamp: { type: Date, required: false, default: Date.now },
-  thumbnail: { type: String, required: true },
-  video: { type: String, required: true },
+  thumbnail: { type: String, required: false },
+  video: { type: String, required: false },
 });
 var videoSchema = new mongoose.model("VideoSchema", videoSchema);
 module.exports = videoSchema;
